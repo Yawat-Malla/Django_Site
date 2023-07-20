@@ -1,0 +1,76 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    {% if title %}
+        <title>{{title}} | Key Club</title>
+    {% else %}  
+        <title>Key Club</title>
+    {% endif %}
+    <link rel="icon" href="{% static 'main/images/logo.png'%}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'main/css/base.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    
+</head>
+
+<body>
+     <nav class="navbar">
+        <ul>
+            <li><a href ="{% url 'main_home'%}"><img src="{% static 'main/images/logo.png'%}" /></a> </li>
+           <li><a href ="{% url 'main_home'%}">Home</a></li> 
+           <li><a href ="{% url 'main_membership'%}">Membership</a></li>
+           <li><a href ="{% url 'main_resources'%}">Resources</a></li> 
+           <li><a href ="{% url 'main_events'%}">Events</a></li>
+           <li><a href ="{% url 'main_team'%}">Team</a></li>
+           <li><a href ="{% url 'main_contact'%}">Contact us</a></li>
+        </ul>   
+    </nav>    
+    <script>
+        var navbar = document.querySelector('.navbar');
+        var lastScrollTop = 0;
+    
+        window.addEventListener('scroll', function() {
+          var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    
+          if (scrollTop > lastScrollTop && !navbar.classList.contains('small')) {
+            navbar.classList.add('small');
+          } else if (scrollTop < lastScrollTop && navbar.classList.contains('small')) {
+            navbar.classList.remove('small');
+          }
+    
+          lastScrollTop = scrollTop;
+        });
+
+      </script>
+      {% block content %}{% endblock %}
+
+    <div class="sep">
+      <footer class="footer">
+        <div class="footer-column">
+          <h3>Contact Us</h3>
+          <p class="footp"><i>Email: info@keyclub.org</i>
+          <br><i>Phone: </i></p> 
+        </div>
+        <div class="footer-column">
+          <h3>Follow Us</h3>
+          <ul>
+            <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+            <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+          </ul>
+        </div>
+        <div class="footer-info">
+          <p class="footp">&copy; 2023 Key Club of Kathmandu. All rights reserved.</p>
+        </div>
+      </footer>
+      <script src="https://kit.fontawesome.com/your-font-awesome-kit.js" crossorigin="anonymous"></script>
+
+    </div>
+      
+
+      
+</body>
+</html>
